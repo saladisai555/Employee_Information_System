@@ -18,20 +18,37 @@ public class Department {
     @JoinColumn(name = "emp_id_hod")
     private Employee hod;
 
-    public Integer getDept_id() {
+    public Department(Integer deptId, String deptName, List<Employee> employees, Employee hod) {
+        this.deptId = deptId;
+        this.deptName = deptName;
+        this.employees = employees;
+        this.hod = hod;
+    }
+    public Department(){
+
+    }
+    public Integer getDeptId() {
         return deptId;
     }
 
-    public void setDept_id(Integer dept_id) {
-        this.deptId = dept_id;
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
     }
 
-    public String getDept_name() {
+    public String getDeptName() {
         return deptName;
     }
 
-    public void setDept_name(String dept_name) {
-        this.deptName = dept_name;
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public Employee getHod() {
+        return hod;
+    }
+
+    public void setHod(Employee hod) {
+        this.hod = hod;
     }
 
     public List<Employee> getEmployees() {

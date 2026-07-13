@@ -15,9 +15,29 @@ public class Job {
       private String title;
       @OneToMany(mappedBy = "job")
       private List<Employee> employees;
-      
+      @OneToMany(mappedBy="job")
+      private List<JobHistory>jobHistories;
     public Job(){
 
+    }
+
+    public Job(Integer job_id, String title, List<Employee> employees, List<JobHistory> jobHistories) {
+        this.job_id = job_id;
+        this.title = title;
+        this.employees = employees;
+        this.jobHistories = jobHistories;
+    }
+
+    public Job(List<JobHistory> jobHistories) {
+        this.jobHistories = jobHistories;
+    }
+
+    public List<JobHistory> getJobHistories() {
+        return jobHistories;
+    }
+
+    public void setJobHistories(List<JobHistory> jobHistories) {
+        this.jobHistories = jobHistories;
     }
 
     public Job(int job_id, String title) {

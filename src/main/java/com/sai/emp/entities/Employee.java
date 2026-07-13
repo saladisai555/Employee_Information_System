@@ -32,7 +32,9 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     List<JobHistory>jobHistories;
+    public Employee(){
 
+    }
     public Integer getEmp_id() {
         return emp_id;
     }
@@ -118,8 +120,6 @@ public class Employee {
                 ", salary=" + salary +
                 ", date=" + date +
                 ", job=" + job +
-                ", department=" + department +
-                ", jobHistories=" + jobHistories +
                 '}';
     }
 }

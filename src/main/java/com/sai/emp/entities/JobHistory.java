@@ -8,51 +8,83 @@ import java.util.Objects;
 @Table(name="job_history")
 public class JobHistory {
     @EmbeddedId
-    private Job_history_id id;
-    private LocalDate end_date;
+    private JobHistoryId id;
+    @Column(name="end_date")
+    private LocalDate endDate;
     @ManyToOne
+    @MapsId("emp_id")
     @JoinColumn(name="emp_id")
     private Employee employee;
+
+    @ManyToOne
+    @MapsId("job_id")
+    @JoinColumn(name="job_id")
+    private Job job;
     public JobHistory(){
 
     }
-    public JobHistory(Job_history_id id, LocalDate end_date) {
+
+    public JobHistory(JobHistoryId id, LocalDate endDate, Employee employee, Job job) {
         this.id = id;
-        this.end_date = end_date;
+        this.endDate = endDate;
+        this.employee = employee;
+        this.job = job;
     }
 
-    public Job_history_id getId() {
+    public JobHistory(JobHistoryId id, LocalDate end_date) {
+        this.id = id;
+        this.endDate = end_date;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
+    public JobHistoryId getId() {
         return id;
     }
 
-    public void setId(Job_history_id id) {
+    public void setId(JobHistoryId id) {
         this.id = id;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
-    }
-
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
-    }
 
     @Override
     public String toString() {
         return "Job_history{" +
                 "id=" + id +
-                ", end_date=" + end_date +
+                ", end_date=" + endDate +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof JobHistory that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(end_date, that.end_date);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, end_date);
+        return Objects.hash(id);
     }
 }

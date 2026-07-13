@@ -1,0 +1,12 @@
+package com.sai.emp.Services;
+
+import com.sai.emp.entities.Employee;
+import com.sai.emp.entities.JobHistory;
+
+import java.util.List;
+
+public interface JobHistoryService {
+    List<JobHistory>getJobHistory(Integer emp_id);
+
+    JobHistory addJobHistory(JobHistory jobHistory);
+}
