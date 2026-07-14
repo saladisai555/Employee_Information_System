@@ -1,4 +1,5 @@
 package com.sai.emp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -31,6 +32,7 @@ public class Employee {
     private Department department;
 
     @OneToMany(mappedBy = "employee")
+    @JsonIgnore
     List<JobHistory>jobHistories;
     public Employee(){
 

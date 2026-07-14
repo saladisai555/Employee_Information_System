@@ -1,4 +1,5 @@
 package com.sai.emp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 
@@ -14,8 +15,10 @@ public class Job {
       @Column(name="title")
       private String title;
       @OneToMany(mappedBy = "job")
+      @JsonIgnore
       private List<Employee> employees;
       @OneToMany(mappedBy="job")
+      @JsonIgnore
       private List<JobHistory>jobHistories;
     public Job(){
 

@@ -1,4 +1,5 @@
 package com.sai.emp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class Department {
     @Column(name="dept_name")
     private String deptName;
     @OneToMany(mappedBy = "department")
+    @JsonIgnore
     List<Employee> employees;
     @OneToOne
     @JoinColumn(name = "emp_id_hod")

@@ -1,5 +1,6 @@
 package com.sai.emp.Services;
 
+import com.sai.emp.dto.SalaryUpdateRequestDto;
 import com.sai.emp.entities.Employee;
 
 import java.math.BigDecimal;
@@ -16,6 +17,6 @@ public interface EmployeeService {
 
     List<Employee>getEmployeesByExperience(int years);
 
-    Employee updateSalary(Integer emp_id,BigDecimal salary);
+    Employee updateSalary(Integer emp_id, SalaryUpdateRequestDto dto);
 
 }

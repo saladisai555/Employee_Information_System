@@ -1,6 +1,7 @@
 package com.sai.emp.Controllers;
 
 import com.sai.emp.Services.EmployeeService;
+import com.sai.emp.dto.SalaryUpdateRequestDto;
 import com.sai.emp.entities.Employee;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{emp_id}/salary")
-    public Employee updateSalary(@PathVariable Integer emp_id,@RequestParam BigDecimal salary){
-        return employeeService.updateSalary(emp_id,salary);
+    public Employee updateSalary(@PathVariable Integer emp_id, @RequestBody SalaryUpdateRequestDto dto){
+        return employeeService.updateSalary(emp_id,dto);
     }
 }

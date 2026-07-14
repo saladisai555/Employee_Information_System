@@ -2,6 +2,7 @@ package com.sai.emp.Controllers;
 
 import com.sai.emp.Services.JobHistoryService;
 import com.sai.emp.Services.impl.JobHistoryServiceImp;
+import com.sai.emp.dto.JobHistoryRequestDto;
 import com.sai.emp.entities.JobHistory;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class JobHistoryController {
     }
 
     @PostMapping
-    public JobHistory addJobHistory(@RequestBody JobHistory jobHistory){
-        return jobHistoryService.addJobHistory(jobHistory);
+    public JobHistory addJobHistory(@RequestBody JobHistoryRequestDto dto){
+        return jobHistoryService.addJobHistory(dto);
     }
 }

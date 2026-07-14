@@ -1,6 +1,7 @@
 package com.sai.emp.Services.impl;
 
 import com.sai.emp.Services.EmployeeService;
+import com.sai.emp.dto.SalaryUpdateRequestDto;
 import com.sai.emp.entities.Employee;
 import com.sai.emp.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
@@ -43,11 +44,11 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    public Employee updateSalary(Integer emp_id, BigDecimal salary) {
+    public Employee updateSalary(Integer emp_id, SalaryUpdateRequestDto dto) {
         Employee employee=employeeRepository.findById(emp_id).orElseThrow(
                 ()->new RuntimeException("Employee not found")
         );
-        employee.setSalary(salary);
+        employee.setSalary(dto.getSalary());
         return employeeRepository.save(employee);
     }
 }
