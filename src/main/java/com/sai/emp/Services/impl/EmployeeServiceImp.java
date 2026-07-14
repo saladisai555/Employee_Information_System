@@ -10,45 +10,51 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
-
 @Service
 public class EmployeeServiceImp implements EmployeeService {
+
     private final EmployeeRepository employeeRepository;
-    EmployeeServiceImp(EmployeeRepository employeeRepository){
-        this.employeeRepository=employeeRepository;
-    }
-    @Override
-    public List<Employee> getEmployeesByJob(Integer job_id) {
-        return employeeRepository.findByJobJob_id(job_id);
+
+    public EmployeeServiceImp(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public List<Employee> getEmployeesByDepartment(Integer dept_id) {
-        return employeeRepository.findByDepartmentDept_id(dept_id);
+    public List<Employee> getEmployeesByJob(Integer jobId) {
+        return employeeRepository.findByJobJobId(jobId);
+    }
+
+    @Override
+    public List<Employee> getEmployeesByDepartment(Integer deptId) {
+        return employeeRepository.findByDepartmentDeptId(deptId);
     }
 
     @Override
     public List<Employee> searchEmployees(String name) {
-        return employeeRepository.findByEmp_nameContainingIgnoreCase(name);
+        return employeeRepository.findByEmpNameContainingIgnoreCase(name);
     }
 
     @Override
     public List<Employee> getEmployeesBySalaryInRange(BigDecimal min, BigDecimal max) {
-        return employeeRepository.findBySalaryBetween(min,max);
+        return employeeRepository.findBySalaryBetween(min, max);
     }
 
     @Override
     public List<Employee> getEmployeesByExperience(int years) {
-        LocalDate date=LocalDate.now().minusYears(years);
+
+        LocalDate date = LocalDate.now().minusYears(years);
+
         return employeeRepository.findByDateBefore(date);
     }
 
     @Override
-    public Employee updateSalary(Integer emp_id, SalaryUpdateRequestDto dto) {
-        Employee employee=employeeRepository.findById(emp_id).orElseThrow(
-                ()->new RuntimeException("Employee not found")
-        );
+    public Employee updateSalary(Integer empId, SalaryUpdateRequestDto dto) {
+
+        Employee employee = employeeRepository.findById(empId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
         employee.setSalary(dto.getSalary());
+
         return employeeRepository.save(employee);
     }
 }

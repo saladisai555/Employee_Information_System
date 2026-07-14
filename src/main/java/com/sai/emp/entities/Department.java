@@ -17,6 +17,7 @@ public class Department {
     @JsonIgnore
     List<Employee> employees;
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "emp_id_hod")
     private Employee hod;
 

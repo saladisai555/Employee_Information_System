@@ -13,13 +13,13 @@ import java.util.List;
 @RequestMapping("jobHistory")
 public class JobHistoryController {
     private final JobHistoryService jobHistoryService;
-    JobHistoryController(JobHistoryService jobHistoryService){
+    public JobHistoryController(JobHistoryService jobHistoryService){
         this.jobHistoryService=jobHistoryService;
     }
 
-    @GetMapping("/{emp_id}")
-    public List<JobHistory>getJobHistory(@PathVariable Integer emp_id){
-        return jobHistoryService.getJobHistory(emp_id);
+    @GetMapping("/{empId}")
+    public List<JobHistory>getJobHistory(@PathVariable Integer empId){
+        return jobHistoryService.getJobHistory(empId);
     }
 
     @PostMapping

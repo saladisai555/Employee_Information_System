@@ -4,58 +4,56 @@ import java.time.LocalDate;
 
 public class JobHistoryRequestDto {
 
-        private Integer emp_id;
+    private Integer empId;
 
-        private Integer job_id;
+    private Integer jobId;
 
-        private LocalDate start_date;
+    private LocalDate startDate;
 
-        private LocalDate end_date;
+    private LocalDate endDate;
 
-        public JobHistoryRequestDto() {
-        }
-
-        public JobHistoryRequestDto(Integer emp_id,
-                                    Integer job_id,
-                                    LocalDate start_date,
-                                    LocalDate end_date) {
-
-            this.emp_id = emp_id;
-            this.job_id = job_id;
-            this.start_date = start_date;
-            this.end_date = end_date;
-        }
-
-    public Integer getEmp_id() {
-        return emp_id;
+    public JobHistoryRequestDto() {
     }
 
-    public void setEmp_id(Integer emp_id) {
-        this.emp_id = emp_id;
+    public JobHistoryRequestDto(Integer empId,
+                                Integer jobId,
+                                LocalDate startDate,
+                                LocalDate endDate) {
+        this.empId = empId;
+        this.jobId = jobId;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    public Integer getJob_id() {
-        return job_id;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setJob_id(Integer job_id) {
-        this.job_id = job_id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
-    public LocalDate getStart_date() {
-        return start_date;
+    public Integer getJobId() {
+        return jobId;
     }
 
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
-    }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+}

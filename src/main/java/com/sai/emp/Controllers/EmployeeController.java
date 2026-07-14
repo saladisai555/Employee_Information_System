@@ -16,14 +16,14 @@ public class EmployeeController {
         this.employeeService=employeeService;
     }
 
-    @GetMapping("/jobs/{job_id}")
-    public List<Employee>getEmployeeByJob(@PathVariable Integer job_id){
-        return employeeService.getEmployeesByJob(job_id);
+    @GetMapping("/jobs/{jobId}")
+    public List<Employee>getEmployeeByJob(@PathVariable Integer jobId){
+        return employeeService.getEmployeesByJob(jobId);
     }
 
-    @GetMapping("/department/{dept_id}")
-    public List<Employee>getEmployeeByDepartment(@PathVariable Integer dept_id){
-        return employeeService.getEmployeesByDepartment(dept_id);
+    @GetMapping("/department/{deptId}")
+    public List<Employee>getEmployeeByDepartment(@PathVariable Integer deptId){
+        return employeeService.getEmployeesByDepartment(deptId);
     }
 
     @GetMapping("/search")
@@ -41,8 +41,8 @@ public class EmployeeController {
         return employeeService.getEmployeesByExperience(years);
     }
 
-    @PutMapping("/{emp_id}/salary")
-    public Employee updateSalary(@PathVariable Integer emp_id, @RequestBody SalaryUpdateRequestDto dto){
-        return employeeService.updateSalary(emp_id,dto);
+    @PutMapping("/{empId}/salary")
+    public Employee updateSalary(@PathVariable Integer empId, @RequestBody SalaryUpdateRequestDto dto){
+        return employeeService.updateSalary(empId,dto);
     }
 }

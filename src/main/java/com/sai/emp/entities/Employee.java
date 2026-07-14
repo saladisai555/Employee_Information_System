@@ -13,9 +13,9 @@ import java.util.Objects;
 public class Employee {
     @Id
     @Column(name="emp_id")
-    private Integer emp_id;
+    private Integer empId;
     @Column(name="emp_name")
-    private String emp_name;
+    private String empName;
 
     @Column(name="salary",precision = 10, scale = 2)
     private BigDecimal salary;
@@ -24,10 +24,12 @@ public class Employee {
     private LocalDate date;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="job_id")
     private Job job;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="dept_id")
     private Department department;
 
@@ -37,20 +39,20 @@ public class Employee {
     public Employee(){
 
     }
-    public Integer getEmp_id() {
-        return emp_id;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setEmp_id(Integer emp_id) {
-        this.emp_id = emp_id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
-    public String getEmp_name() {
-        return emp_name;
+    public String getEmpName() {
+        return empName;
     }
 
-    public void setEmp_name(String emp_name) {
-        this.emp_name = emp_name;
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
     public BigDecimal getSalary() {
@@ -92,33 +94,38 @@ public class Employee {
     public void setJobHistories(List<JobHistory> jobHistories) {
         this.jobHistories = jobHistories;
     }
+    public Employee(Integer empId,
+                    String empName,
+                    BigDecimal salary,
+                    LocalDate date,
+                    Job job,
+                    Department department,
+                    List<JobHistory> jobHistories) {
 
-    public Employee(Integer emp_id, String emp_name, BigDecimal salary, LocalDate date, Job job, Department department, List<JobHistory> jobHistories) {
-        this.emp_id = emp_id;
-        this.emp_name = emp_name;
+        this.empId = empId;
+        this.empName = empName;
         this.salary = salary;
         this.date = date;
         this.job = job;
         this.department = department;
         this.jobHistories = jobHistories;
     }
-
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Employee employee)) return false;
-        return Objects.equals(emp_id, employee.emp_id);
+        return Objects.equals(empId, employee.empId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(emp_id);
+        return Objects.hashCode(empId);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "emp_id=" + emp_id +
-                ", emp_name='" + emp_name + '\'' +
+                "emp_id=" + empId +
+                ", emp_name='" + empName + '\'' +
                 ", salary=" + salary +
                 ", date=" + date +
                 ", job=" + job +

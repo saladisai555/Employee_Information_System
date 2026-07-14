@@ -7,7 +7,7 @@ import com.sai.emp.entities.JobHistory;
 import java.util.List;
 
 public interface JobHistoryService {
-    List<JobHistory>getJobHistory(Integer emp_id);
+    List<JobHistory>getJobHistory(Integer empId);
 
     JobHistory addJobHistory(JobHistoryRequestDto dto);
 }

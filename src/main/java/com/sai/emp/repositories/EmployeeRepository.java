@@ -10,15 +10,15 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
-            List<Employee> findByJobJob_id(Integer job_id);
 
-            List<Employee> findByDepartmentDept_id(Integer dept_id);
+    List<Employee> findByJobJobId(Integer jobId);
 
-            List<Employee> findByEmp_nameContainingIgnoreCase(String name);
+    List<Employee>findByDepartmentDeptId(Integer deptId);
 
-            List<Employee> findBySalaryBetween(BigDecimal min,BigDecimal max);
+    List<Employee>findByEmpNameContainingIgnoreCase(String name);
 
-            List<Employee> findByDateBefore(LocalDate date);
+    List<Employee> findBySalaryBetween(BigDecimal min, BigDecimal max);
 
+    List<Employee>findByDateBefore(LocalDate date);
 
 }

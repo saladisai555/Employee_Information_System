@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Job {
       @Id
       @Column(name="job_id")
-      private Integer job_id;
+      private Integer jobId;
       @Column(name="title")
       private String title;
       @OneToMany(mappedBy = "job")
@@ -25,7 +25,7 @@ public class Job {
     }
 
     public Job(Integer job_id, String title, List<Employee> employees, List<JobHistory> jobHistories) {
-        this.job_id = job_id;
+        this.jobId = job_id;
         this.title = title;
         this.employees = employees;
         this.jobHistories = jobHistories;
@@ -44,16 +44,16 @@ public class Job {
     }
 
     public Job(int job_id, String title) {
-        this.job_id = job_id;
+        this.jobId = job_id;
         this.title = title;
     }
 
     public Integer getJob_id() {
-        return job_id;
+        return jobId;
     }
 
     public void setJob_id(Integer job_id) {
-        this.job_id = job_id;
+        this.jobId = job_id;
     }
 
     public String getTitle() {
@@ -75,7 +75,7 @@ public class Job {
     @Override
     public String toString() {
         return "Job{" +
-                "job_id=" + job_id +
+                "job_id=" + jobId +
                 ", title='" + title + '\'' +
                 '}';
     }
@@ -84,11 +84,11 @@ public class Job {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return Objects.equals(job_id, job.job_id);
+        return Objects.equals(jobId, job.jobId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(job_id);
+        return Objects.hash(jobId);
     }
 }

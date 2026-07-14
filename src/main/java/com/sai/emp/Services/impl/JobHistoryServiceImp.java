@@ -13,10 +13,10 @@ import com.sai.emp.entities.Employee;
 import java.util.List;
 
 @Service
-public class JobHistoryServiceImp implements JobHistoryService {private final JobHistoryRepository jobHistoryRepository;
+public class JobHistoryServiceImp implements JobHistoryService {
+    private final JobHistoryRepository jobHistoryRepository;
     private final EmployeeRepository employeeRepository;
     private final JobRepository jobRepository;
-
     public JobHistoryServiceImp(JobHistoryRepository jobHistoryRepository,
                                 EmployeeRepository employeeRepository,
                                 JobRepository jobRepository) {
@@ -25,27 +25,30 @@ public class JobHistoryServiceImp implements JobHistoryService {private final Jo
         this.jobRepository = jobRepository;
     }
     @Override
-    public List<JobHistory> getJobHistory(Integer emp_id) {
+    public List<JobHistory> getJobHistory(Integer empId) {
 
-        return jobHistoryRepository.findByEmployeeEmp_id(emp_id);
+        return jobHistoryRepository.findByEmployeeEmpId(empId);
     }
 
     @Override
     public JobHistory addJobHistory(JobHistoryRequestDto dto) {
-      Employee employee= employeeRepository.findById(dto.getEmp_id())
-                          .orElseThrow(() -> new RuntimeException("employee not found"));
-      Job job=jobRepository.findById(dto.getJob_id())
-                           .orElseThrow(()->new RuntimeException("job not found"));
-        JobHistoryId id=new JobHistoryId(
-                dto.getEmp_id(),
-                dto.getJob_id(),
-                dto.getStart_date()
+        Employee employee = employeeRepository.findById(dto.getEmpId())
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        Job job = jobRepository.findById(dto.getJobId())
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+
+        JobHistoryId id = new JobHistoryId(
+                dto.getEmpId(),
+                dto.getJobId(),
+                dto.getStartDate()
         );
+
         JobHistory history=new JobHistory();
         history.setId(id);
-        history.setEndDate(dto.getEnd_date());
         history.setJob(job);
         history.setEmployee(employee);
+        history.setEndDate(dto.getEndDate());
 
         return jobHistoryRepository.save(history);
 

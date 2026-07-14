@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface JobHistoryRepository extends JpaRepository<JobHistory, JobHistoryId> {
 
-    List<JobHistory>findByEmployeeEmp_id(Integer emp_id);
+    List<JobHistory>findByEmployeeEmpId(Integer empId);
 }

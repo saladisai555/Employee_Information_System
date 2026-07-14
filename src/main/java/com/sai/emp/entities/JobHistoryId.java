@@ -1,68 +1,77 @@
 package com.sai.emp.entities;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Embeddable
 public class JobHistoryId implements Serializable {
-    @Column(name="emp_id")
-    private Integer emp_id;
-    @Column(name="job_id")
-    private Integer job_id;
-    @Column(name="start_date")
-    private LocalDate start_date;
+
+    @Column(name = "emp_id")
+    private Integer empId;
+
+    @Column(name = "job_id")
+    private Integer jobId;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    public JobHistoryId() {
+    }
+
+    public JobHistoryId(Integer empId, Integer jobId, LocalDate startDate) {
+        this.empId = empId;
+        this.jobId = jobId;
+        this.startDate = startDate;
+    }
+
+    public Integer getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
+    }
+
+    public Integer getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof JobHistoryId that)) return false;
-        return Objects.equals(emp_id, that.emp_id) && Objects.equals(job_id, that.job_id) && Objects.equals(start_date, that.start_date);
-    }
-   public JobHistoryId(){
-
-   }
-    public JobHistoryId(Integer emp_id, Integer job_id, LocalDate start_date) {
-        this.emp_id = emp_id;
-        this.job_id = job_id;
-        this.start_date = start_date;
-    }
-
-    public Integer getEmp_id() {
-        return emp_id;
-    }
-
-    public void setEmp_id(Integer emp_id) {
-        this.emp_id = emp_id;
-    }
-
-    public Integer getJob_id() {
-        return job_id;
-    }
-
-    public void setJob_id(Integer job_id) {
-        this.job_id = job_id;
-    }
-
-    public LocalDate getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
+        return Objects.equals(empId, that.empId)
+                && Objects.equals(jobId, that.jobId)
+                && Objects.equals(startDate, that.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(emp_id, job_id, start_date);
+        return Objects.hash(empId, jobId, startDate);
     }
 
     @Override
     public String toString() {
-        return "Job_history_id{" +
-                "emp_id=" + emp_id +
-                ", job_id=" + job_id +
-                ", start_date=" + start_date +
+        return "JobHistoryId{" +
+                "empId=" + empId +
+                ", jobId=" + jobId +
+                ", startDate=" + startDate +
                 '}';
     }
 }
